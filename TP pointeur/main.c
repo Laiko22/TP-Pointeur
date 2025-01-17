@@ -1,30 +1,52 @@
 // Adrien Gillet
 #include <stdio.h>
 
-
-int main()
-{
-
-	typedef struct Menu {
+typedef struct Menu {
 
 		const char* option;
 
 	}Menu;
 
-	typedef struct Application {
+typedef struct Application {
 
-		const char* nom;
-		Menu *menus;
-		int nb_menus;
+	const char* nom;
+	Menu *menus;
+	int nb_menus;
 
 	}Application;
+
+void displayMenu(const Application *app) {
+
+	printf("--%s--\n",app->nom);
+
+	for (int i = 0; i < app->nb_menus; i++) {
+
+		printf("%d.%s\n",i+1,app->menus[i].option);
+
+	}
+	
+	printf("\nChoisissez une option (0 pour quitter) :\n");
+}
+
+int main()
+{
+	Menu photoMenus[] = {"Regarder une photo","Modifier une photo" };
+
+	Application Photo;
+	Photo.nom = "Photo";
+	Photo.nb_menus = 2;
+	Photo.menus = photoMenus;
+
+
+	displayMenu(&Photo);
+
 
 	Application Youtube;
 
 	Youtube.nom = "Youtube";
 	Youtube.nb_menus = 1;
 
-	printf("Nombre menu : %d, Nom de l'appli : %s",Youtube.nb_menus,Youtube.nom);
+	
 
 
 	return 0;
