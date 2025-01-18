@@ -15,6 +15,26 @@ typedef struct Application {
 
 	}Application;
 
+void runApplication(const Application* app) {
+
+	int j, k;
+	printf("\nVeuillez choisir une option : ");
+	scanf_s("%d", &j);
+
+	if (j > 0 && j <= app->nb_menus) {
+		printf("\nOption choisie : %s", app->menus[j - 1].option);
+	}
+
+	else {
+		printf("\nOption invalide !");
+	}
+
+	printf("\n\nPour quitter, appuyez sur 0.\n");
+	scanf_s("%d", &k);
+	if (k == 0)
+		printf("Fermeture de l'application");
+}
+
 void displayMenu(const Application *app) {
 
 	printf("--%s--\n",app->nom);
@@ -24,8 +44,8 @@ void displayMenu(const Application *app) {
 		printf("%d.%s\n",i+1,app->menus[i].option);
 
 	}
-	
-	printf("\nChoisissez une option (0 pour quitter) :\n");
+
+	runApplication(app);
 }
 
 int main()
