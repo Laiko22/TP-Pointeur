@@ -16,9 +16,10 @@ typedef struct Application {
 	}Application;
 
 
-void runApplication(const Application* app) {
+void runApplication(const Application *app) {
 
 	int j, k;
+	
 	printf("\nVeuillez choisir une option : ");
 	scanf_s("%d", &j);
 
@@ -74,6 +75,29 @@ void runPhone(Application* app1, Application* app2, Application* app3) {
 	}
 	else
 		;
+}
+
+void updateMenu(Application* app, int menuIndex, const char* newOption) {
+
+	int n;
+
+	printf("Quelle option voulez vous modifier parmi celle ci : ");
+
+	for (int m = 0; m < app->nb_menus; m++) {
+
+		printf("%d.%s\n", m + 1, app->menus[m].option);
+	}
+
+	scanf_s("%d", &n);
+
+	if (n > app->nb_menus)
+		printf("Options invalide");
+
+	else{
+		int nv;
+
+		photoMenus[n] = nv;
+	}
 }
 
 int main()
